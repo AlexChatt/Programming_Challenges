@@ -1,0 +1,40 @@
+﻿  Medium_Algorithms.cpp
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(61,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(122,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(125,21): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(168,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(173,22): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(190,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(190,46): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(195,26): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(217,18): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(247,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(290,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(312,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(324,25): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(416,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(442,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(444,13): warning C4018: '>=': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(495,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(530,35): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(573,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(580,13): warning C4018: '>': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(582,29): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(601,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(615,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(651,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(702,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(718,11): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(718,42): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(774,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(792,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(813,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(838,21): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(854,22): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(887,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(903,29): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(927,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(932,20): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(934,25): warning C4018: '<': signed/unsigned mismatch
+E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Medium_Algorithms.cpp(799): warning C4715: 'FindSortedTriplet': not all control paths return a value
+  Easy_Algorthims.vcxproj -> E:\Alex_Chatt_Coding\Algorthims\Easy\Easy_Algorthims\Debug\Easy_Algorthims.exe
