@@ -2281,6 +2281,37 @@ void PermutationStringOfSub(std::string string, std::string substring)
 
 }
 
+void PrintCombos(std::vector<std::vector<std::string>> Strings)
+{
+	std::vector<int> indexes(Strings.size());
+	std::fill(indexes.begin(), indexes.end(), 0);
+	int lastElement = indexes.size() - 1;
+
+	if (Strings.size() == 0) { return; }
+
+	while (indexes[0] < Strings[0].size())
+	{
+		for (int i = 0; i <= lastElement; i++)
+		{
+			std::cout << Strings[i][indexes[i]] << " ";
+		}
+		std::cout << "\n";
+
+		indexes[lastElement]++;
+		if (indexes[lastElement] == Strings[lastElement].size())
+		{
+			for (int i = lastElement; i > 0; i--)
+			{
+				if (indexes[i] >= Strings[i].size())
+				{
+					indexes[i] = 0;
+					indexes[i - 1]++;
+				}
+			}
+		}
+	}
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -2741,7 +2772,26 @@ int runMFunctions()
 	PermutationStringOfSub("XYYZXZYZXXYZ", "XYZ");
 	//End
 
+	//https://www.techiedelight.com/combinations-phrases-formed-picking-words-lists/
+	std::vector<std::string> v1 = { "John", "Emma" };
+	std::vector<std::string> v2 = { "Plays", "Hates", "Watches" };
+	std::vector<std::string> v3 = { "Cricket", "Soccer", "Chess" };
+	PrintCombos(std::vector<std::vector<std::string>>{v1, v2, v3});
+	//End
+	
+	//https://www.techiedelight.com/minimum-number-inversions-expression-balanced/
+	//End
+
+	//https://www.techiedelight.com/find-combinations-non-overlapping-substrings-string/
+	//End
+
+	//https://www.techiedelight.com/find-strings-given-length-containing-balanced-parentheses/
+	//End
+
 	//https://www.techiedelight.com/find-palindromic-permutations-string/
+	//End
+
+	//https://www.techiedelight.com/construct-longest-palindrome-string/
 	//End
 
 	return 0;
