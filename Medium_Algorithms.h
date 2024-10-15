@@ -102,5 +102,6 @@ void PrintZigZagString(std::string string, int k);
 void LongestSubString(std::string string);
 void PermutationStringOfSub(std::string string, std::string substring);
 void PrintCombos(std::vector<std::vector<std::string>> Strings);
+int BalanceInversionsNeeded(std::string Expression);
 
 int runMFunctions();

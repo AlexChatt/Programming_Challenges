@@ -2312,6 +2312,44 @@ void PrintCombos(std::vector<std::vector<std::string>> Strings)
 	}
 }
 
+int BalanceInversionsNeeded(std::string Expression)
+{
+	int Open = 0;
+	int Imbalence = 0;
+
+	if(Expression.size() == 0 || Expression.size() % 2 != 0)
+	{
+		std::cout << "This Expression cannot be balanced\n";
+		return -1;
+	}
+
+	for (int i = 0; i < Expression.size(); i++)
+	{
+		// if we find a "}" with no "open", it will always need to be swapped
+		// so lets assume it to be an make our list "open"
+		if (Open == 0 && Expression[i] == '}')
+		{
+			Imbalence++;
+			Open++;
+		}
+		else if (Expression[i] == '}' && Open > 0)
+		{
+			Open--;
+		}
+		if (Expression[i] == '{')
+		{
+			Open++;
+		}
+
+	}
+
+	Imbalence += (Open/2);
+
+	std::cout << "Minimum number of inversions needed is " << Imbalence << "\n";
+
+	return Imbalence;
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -2780,6 +2818,7 @@ int runMFunctions()
 	//End
 	
 	//https://www.techiedelight.com/minimum-number-inversions-expression-balanced/
+	BalanceInversionsNeeded("}}}}}}");
 	//End
 
 	//https://www.techiedelight.com/find-combinations-non-overlapping-substrings-string/
