@@ -203,7 +203,7 @@ int runAlgFunctions()
 	std::vector<std::vector<int>> NumsToTarget = BackTrackExample(numbers, target);
 
 	numbers = { 7, 3, 5, 12, 2, 1, 5, 3, 8, 4, 6, 4 };
-	int split = 6;
+	int split = 2;
 	std::sort(numbers.begin(), numbers.end());
 	KPartitions(numbers, split);
 

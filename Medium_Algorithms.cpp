@@ -2350,6 +2350,31 @@ int BalanceInversionsNeeded(std::string Expression)
 	return Imbalence;
 }
 
+void PrintBalenceBracketCombos(std::string current, int open, int n, int OpenUsed)
+{
+	if (n % 2 != 0)
+	{
+		// cant be done
+		return;
+	}
+
+	if (current.size() == n && open == 0)
+	{
+		std::cout << current << std::endl;
+		return;
+	}
+
+	if (OpenUsed != n / 2)
+	{
+		PrintBalenceBracketCombos(current + "(", open+1, n, OpenUsed+1);
+	}
+
+	if (open > 0)
+	{
+		PrintBalenceBracketCombos(current + ")", open-1, n, OpenUsed);
+	}
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -2820,11 +2845,15 @@ int runMFunctions()
 	//https://www.techiedelight.com/minimum-number-inversions-expression-balanced/
 	BalanceInversionsNeeded("}}}}}}");
 	//End
-
+	
 	//https://www.techiedelight.com/find-combinations-non-overlapping-substrings-string/
 	//End
 
 	//https://www.techiedelight.com/find-strings-given-length-containing-balanced-parentheses/
+	PrintBalenceBracketCombos(std::string(), 0, 6, 0);
+	//End
+
+	//https://www.techiedelight.com/find-first-non-repeating-character-string-one-traversal/
 	//End
 
 	//https://www.techiedelight.com/find-palindromic-permutations-string/
