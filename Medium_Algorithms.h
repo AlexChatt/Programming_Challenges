@@ -104,5 +104,6 @@ void PermutationStringOfSub(std::string string, std::string substring);
 void PrintCombos(std::vector<std::vector<std::string>> Strings);
 int BalanceInversionsNeeded(std::string Expression);
 void PrintBalenceBracketCombos(std::string current, int open, int n, int OpenUsed);
+void FindFirstNonRepeatChar(std::string string);
 
 int runMFunctions();

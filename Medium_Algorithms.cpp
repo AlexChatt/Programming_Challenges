@@ -2375,6 +2375,46 @@ void PrintBalenceBracketCombos(std::string current, int open, int n, int OpenUse
 	}
 }
 
+//Only one Traversal allowed
+void FindFirstNonRepeatChar(std::string string)
+{
+	std::unordered_map<char, std::pair<int, int>> CharCount;
+	int minIndex = INT_MAX;
+	char character = '\0';
+
+	for (int i = 0; i < string.size(); i++)
+	{
+		if (CharCount.find(string[i]) != CharCount.end())
+		{
+			CharCount[string[i]].second++;
+		}
+		else
+		{
+			CharCount[string[i]] = std::pair<int, int>(i, 1);
+		}
+	}
+
+	for (auto &letter : CharCount)
+	{
+		if (letter.second.second == 1 && letter.second.first < minIndex)
+		{
+			minIndex = letter.second.first;
+			character = string[minIndex];
+		}
+	}
+
+	if (character != '\0')
+	{
+		std::cout << "The first non-repeating character in the string is " << character << "\n";
+	}
+	else
+	{
+		std::cout << "No non-repeating character found \n";
+	}
+
+
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -2845,6 +2885,10 @@ int runMFunctions()
 	//https://www.techiedelight.com/minimum-number-inversions-expression-balanced/
 	BalanceInversionsNeeded("}}}}}}");
 	//End
+
+	//https://www.techiedelight.com/find-first-non-repeating-character-string-one-traversal/
+	FindFirstNonRepeatChar("ABCDBAGHC");
+	//End
 	
 	//https://www.techiedelight.com/find-combinations-non-overlapping-substrings-string/
 	//End
@@ -2853,8 +2897,6 @@ int runMFunctions()
 	PrintBalenceBracketCombos(std::string(), 0, 6, 0);
 	//End
 
-	//https://www.techiedelight.com/find-first-non-repeating-character-string-one-traversal/
-	//End
 
 	//https://www.techiedelight.com/find-palindromic-permutations-string/
 	//End
