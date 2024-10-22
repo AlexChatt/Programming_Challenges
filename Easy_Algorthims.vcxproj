@@ -145,6 +145,7 @@
     <ClCompile Include="Hard_Algorithms.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Medium_Algorithms.cpp" />
+    <ClCompile Include="recursive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Hard_Algorithms.h" />
     <ClInclude Include="Martix.h" />
     <ClInclude Include="Medium_Algorithms.h" />
+    <ClInclude Include="recursive.h" />
     <ClInclude Include="Template_functions.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
