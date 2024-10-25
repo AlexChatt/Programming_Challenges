@@ -105,5 +105,6 @@ void PrintCombos(std::vector<std::vector<std::string>> Strings);
 int BalanceInversionsNeeded(std::string Expression);
 void PrintBalenceBracketCombos(std::string current, int open, int n, int OpenUsed);
 void FindFirstNonRepeatChar(std::string string);
+void FindLongestPal(std::string s);
 
 int runMFunctions();

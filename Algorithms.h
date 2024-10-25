@@ -18,7 +18,4 @@ bool isSubsetExist(std::vector<int> const& S, int n, std::vector<int> tracker, s
 void MergeSort(std::vector<int> &arr, std::vector<int> &aux, int low, int high);
 void MergeS(std::vector<int> &arr, std::vector<int> &aux, int low, int mid, int high);
 
-//QuickSort
-void QuickSort();
-
 int runAlgFunctions();

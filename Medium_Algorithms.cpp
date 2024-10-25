@@ -2411,8 +2411,55 @@ void FindFirstNonRepeatChar(std::string string)
 	{
 		std::cout << "No non-repeating character found \n";
 	}
+}
 
+void FindLongestPal(std::string s)
+{
+	std::unordered_map<char, int> chars;
+	std::string LongestPal = "", ReversePal = "";
+	char pivot = '\0';
 
+	if (s.size() < 2) 
+	{
+		return;
+	}
+
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (chars.find(s[i]) != chars.end())
+		{
+			chars[s[i]]++;
+		}
+		else
+		{
+			chars[s[i]] = 1;
+		}
+	}
+
+	for (auto& c : chars)
+	{
+		if (c.second == 1 )
+		{
+			if (pivot == '\0')
+			{
+				pivot = c.first;
+			}
+		}
+		else 
+		{
+			if (c.second % 2 != 0 && pivot == '\0')
+			{
+				pivot = c.first;
+			}
+			int divtwo = std::ceil(c.second / 2);
+			LongestPal += std::string((divtwo),c.first);
+			ReversePal = std::string((divtwo), c.first) + ReversePal;
+		}
+	}
+
+	LongestPal = LongestPal + pivot + ReversePal;
+
+	std::cout << "The longest palindrome is " << LongestPal << "\n";
 }
 
 int runMFunctions()
@@ -2902,6 +2949,7 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/construct-longest-palindrome-string/
+	FindLongestPal("ABCDD");
 	//End
 
 	return 0;
