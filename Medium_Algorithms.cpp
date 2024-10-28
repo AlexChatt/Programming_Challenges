@@ -2131,7 +2131,6 @@ void EditsToString(std::string current, std::string target)
 	std::cout << "The total number of edits required is " << edits << std::endl;
 }
 
-
 // Expand in both directions of `low` and `high` to find
 // maximum length palindrome
 void expand(std::string str, int low, int high, int& max)
@@ -2460,6 +2459,27 @@ void FindLongestPal(std::string s)
 	LongestPal = LongestPal + pivot + ReversePal;
 
 	std::cout << "The longest palindrome is " << LongestPal << "\n";
+}
+
+void PrintNonOverlapSubStrings(std::string s, int index, std::vector<std::vector<std::string>> &combinations, std::vector<std::string> current)
+{
+	if (index == s.size())
+	{
+		combinations.push_back(current);
+		return;
+	}
+
+	current.push_back(std::string("") + s[index]);
+	PrintNonOverlapSubStrings(s, index + 1, combinations, current);
+	current.pop_back();
+
+	if (current.size() == 0)
+	{
+		return;
+	}
+
+	current[current.size() - 1] += s[index];
+	PrintNonOverlapSubStrings(s, index + 1, combinations, current);
 }
 
 int runMFunctions()
@@ -2938,6 +2958,8 @@ int runMFunctions()
 	//End
 	
 	//https://www.techiedelight.com/find-combinations-non-overlapping-substrings-string/
+	std::vector<std::vector<std::string>> combinations;
+	PrintNonOverlapSubStrings("ABCD", 0, combinations, std::vector<std::string>());
 	//End
 
 	//https://www.techiedelight.com/find-strings-given-length-containing-balanced-parentheses/
