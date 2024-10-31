@@ -107,5 +107,7 @@ void PrintBalenceBracketCombos(std::string current, int open, int n, int OpenUse
 void FindFirstNonRepeatChar(std::string string);
 void FindLongestPal(std::string s);
 void PrintNonOverlapSubStrings(std::string s, int index, std::vector<std::vector<std::string>>& combinations, std::vector<std::string> current);
+void StringDiff(std::string X, std::string Y);
+int KnapSackProblem(std::vector<int> value, std::vector<int> weight, int CurWeight, int curri, std::map <std::string, int> lookup);
 
 int runMFunctions();

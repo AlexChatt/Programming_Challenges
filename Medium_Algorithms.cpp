@@ -2482,12 +2482,43 @@ void PrintNonOverlapSubStrings(std::string s, int index, std::vector<std::vector
 	PrintNonOverlapSubStrings(s, index + 1, combinations, current);
 }
 
+void StringDiff(std::string X, std::string Y)
+{
+
+}
+
+int KnapSackProblem(std::vector<int> value, std::vector<int> weight, int CurWeight, int curri, std::map <std::string, int> lookup)
+{
+	if (CurWeight < 0)
+	{
+		return INT_MIN;
+	}
+
+	if (curri == weight.size() || CurWeight == 0)
+	{
+		return 0;
+	}
+
+	std::string key = std::to_string(curri) + '|' + std::to_string(CurWeight);
+
+	if (lookup.find(key) == lookup.end())
+	{
+		int IncludeSum = value[curri] + KnapSackProblem(value, weight, CurWeight - weight[curri], curri + 1, lookup);
+
+		int ExcludeSum = KnapSackProblem(value, weight, CurWeight, curri + 1, lookup);
+
+		lookup[key] = std::max(IncludeSum, ExcludeSum);
+	}
+
+	return lookup[key];
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
 	int Array[] = { 3, 4, -7, 3, 1, 3, 1, -4, -2, -2 };
 	int ArraySize = sizeof(Array) / sizeof(int);
-	if(DetectSubArrayZero(Array, ArraySize))
+	if (DetectSubArrayZero(Array, ArraySize))
 	{
 		std::cout << "Array contians subarray which equals 0\n";
 	}
@@ -2576,7 +2607,7 @@ int runMFunctions()
 	//https://www.techiedelight.com/find-maximum-sequence-of-continuous-1s-can-formed-replacing-k-zeroes-ones/
 	numbers = { 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0 };
 	int k = 3;
-	MaxSequeceOnes(numbers,k);
+	MaxSequeceOnes(numbers, k);
 	//End
 
 	//https://www.techiedelight.com/find-distinct-combinations-of-given-length/
@@ -2588,13 +2619,13 @@ int runMFunctions()
 	//https://www.techiedelight.com/find-minimum-sum-subarray-given-size-k/
 	numbers = { 10, 4, 2, 5, 6, 3, 8, 1 };
 	k = 3;
-	FindMinSubArrayOfSize(numbers,k);
+	FindMinSubArrayOfSize(numbers, k);
 	//End
 
 	//https://www.techiedelight.com/find-subarray-having-given-sum-given-array
 	numbers = { 0, 5, -7, 1, -4, 7, 6, 1, 4, 1, 10 };
 	k = -3;
-	FindSubArrayWithSum(numbers,k);
+	FindSubArrayWithSum(numbers, k);
 	//End
 
 	//https://www.techiedelight.com/maximum-profit-earned-buying-and-selling-shares/
@@ -2653,10 +2684,10 @@ int runMFunctions()
 	sum = 6;
 	FindTripletToSum(numbers, sum);
 	//End
-	
+
 	//https://www.techiedelight.com/quicksort/
 	numbers = { 10, 12, 15, 3, 6, 8, 9 };
-	Quicksort(numbers, 0, numbers.size()-1);
+	Quicksort(numbers, 0, numbers.size() - 1);
 	std::cout << "Quicksorted Array = { ";
 	for (auto i : numbers) { std::cout << i << " "; }
 	std::cout << "}" << std::endl;
@@ -2666,7 +2697,7 @@ int runMFunctions()
 	std::cout << PowerOf2Higher(52) << "\n";
 	//End
 
-    //https://www.techiedelight.com/round-previous-power-2/
+	//https://www.techiedelight.com/round-previous-power-2/
 	std::cout << PowerOf2Lower(52) << "\n";
 	//End
 
@@ -2687,7 +2718,7 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/print-matrix-spiral-order/
-	std::vector<float> fnums = { 1,2,3,4,5,16,17,18,19,6,15,24,25,20,7,14,23,22,21,8,13,12,11,10,9};
+	std::vector<float> fnums = { 1,2,3,4,5,16,17,18,19,6,15,24,25,20,7,14,23,22,21,8,13,12,11,10,9 };
 	Martix M(5, 5, fnums);
 	M.PrintSpiral();
 	M.Reset();
@@ -2716,15 +2747,15 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/find-common-elements-present-every-row-given-matrix/
-	M = Martix(8, 6, 
-	  { { 7,1,3,5,3,6 },
-		{ 2,3,6,1,1,6 },
-		{ 6,1,7,2,1,4 },
-		{ 6,6,7,1,3,3 },
-		{ 5,5,6,1,5,4 },
-		{ 3,5,6,2,7,1 },
-		{ 4,1,4,3,6,4 },
-		{ 4,6,1,7,4,3 } }
+	M = Martix(8, 6,
+		{ { 7,1,3,5,3,6 },
+		  { 2,3,6,1,1,6 },
+		  { 6,1,7,2,1,4 },
+		  { 6,6,7,1,3,3 },
+		  { 5,5,6,1,5,4 },
+		  { 3,5,6,2,7,1 },
+		  { 4,1,4,3,6,4 },
+		  { 4,6,1,7,4,3 } }
 	);
 	std::vector<float> commonRowNums = M.findRowCommon();
 	std::cout << "The common elements are ";
@@ -2751,7 +2782,7 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/find-distinct-combinations-given-length-repetition-allowed/
-	std::vector<std::vector<int>> AllCombos = FindAllDistinctCombos({ 1,2,3,4},4);
+	std::vector<std::vector<int>> AllCombos = FindAllDistinctCombos({ 1,2,3,4 }, 4);
 	for (int i = 0; i < AllCombos.size(); i++)
 	{
 		std::cout << "{ ";
@@ -2772,7 +2803,7 @@ int runMFunctions()
 	numbers = { 2, 7, 4, 9, 5, 1, 3 };
 	number = 10;
 	std::vector<std::vector<int>> TripletsForNum = GetAllTripToSum(numbers, number);
-	std::cout<<std::endl;
+	std::cout << std::endl;
 	//End
 
 	{
@@ -2825,7 +2856,7 @@ int runMFunctions()
 	std::vector<int> positions = { 3, 2, 4, 1, 0 };
 	ShuffleInPlace(numbers, positions);
 	//End
-	
+
 	//https://www.techiedelight.com/find-symmetric-pairs-array-pairs/
 	std::vector<std::pair<int, int>> pairs = { {3,4}, {1,2}, {5,2}, {7,10}, {4,3}, {2,5} };
 	FindSymPairs(pairs);
@@ -2856,7 +2887,7 @@ int runMFunctions()
 	}
 	else
 	{
-		std::cout << "The array does not contain consecutive integers."<<std::endl;
+		std::cout << "The array does not contain consecutive integers." << std::endl;
 	}
 	//End
 
@@ -2865,7 +2896,7 @@ int runMFunctions()
 	DecodeArray(numbers);
 	//End
 
-    //https://www.techiedelight.com/count-distinct-absolute-values-sorted-array
+	//https://www.techiedelight.com/count-distinct-absolute-values-sorted-array
 	numbers = { -3, -1, 0, 1, 1, 3, 5, 7 };
 	CountDistinctAbsolutes(numbers);
 	//Now do this again without extra space
@@ -2878,7 +2909,7 @@ int runMFunctions()
 	FourSumProblem(numbers, target);
 	//End
 
-    //https://www.techiedelight.com/check-given-set-moves-circular-not/
+	//https://www.techiedelight.com/check-given-set-moves-circular-not/
 	std::string Moves = "MRMLMRMRMMRMM";
 	if (IsMovesCirclar(Moves))
 	{
@@ -2931,7 +2962,7 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/print-string-in-zig-zag-form-k-rows/
-	PrintZigZagString("THISPROBLEMISAWESOME",4);
+	PrintZigZagString("THISPROBLEMISAWESOME", 4);
 	//End
 
 	//https://www.techiedelight.com/find-longest-substring-given-string-containing-distinct-characters/
@@ -2948,7 +2979,7 @@ int runMFunctions()
 	std::vector<std::string> v3 = { "Cricket", "Soccer", "Chess" };
 	PrintCombos(std::vector<std::vector<std::string>>{v1, v2, v3});
 	//End
-	
+
 	//https://www.techiedelight.com/minimum-number-inversions-expression-balanced/
 	BalanceInversionsNeeded("}}}}}}");
 	//End
@@ -2956,7 +2987,7 @@ int runMFunctions()
 	//https://www.techiedelight.com/find-first-non-repeating-character-string-one-traversal/
 	FindFirstNonRepeatChar("ABCDBAGHC");
 	//End
-	
+
 	//https://www.techiedelight.com/find-combinations-non-overlapping-substrings-string/
 	std::vector<std::vector<std::string>> combinations;
 	PrintNonOverlapSubStrings("ABCD", 0, combinations, std::vector<std::string>());
@@ -2966,6 +2997,17 @@ int runMFunctions()
 	PrintBalenceBracketCombos(std::string(), 0, 6, 0);
 	//End
 
+	//https://www.techiedelight.com/implement-diff-utility/
+	StringDiff("XMJYAUZ", "XMJAATZ");
+	//End
+
+	//https://www.techiedelight.com/0-1-knapsack-problem/
+	std::map <std::string, int> lookupMap;
+	std::cout<< "Knapsack value is " << KnapSackProblem(std::vector<int>{20, 5, 10, 40, 15, 25 }, std::vector<int>{1, 2, 3, 8, 7, 4}, 10, 0, lookupMap) << "\n";
+	//End
+
+	//https://www.techiedelight.com/rod-cutting/
+	//End
 
 	//https://www.techiedelight.com/find-palindromic-permutations-string/
 	//End
