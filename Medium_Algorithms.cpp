@@ -2513,6 +2513,23 @@ int KnapSackProblem(std::vector<int> value, std::vector<int> weight, int CurWeig
 	return lookup[key];
 }
 
+int RobCuttingProfit(std::vector<int> length, std::vector<int> price, int CurLen, int StartI)
+{
+	int MaxProfit = INT_MIN;
+
+	if (CurLen == 0)
+	{
+		return 0;
+	}
+
+	for (int i = StartI; length[i] <= CurLen && i < length.size(); i++)
+	{
+		MaxProfit = std::max(MaxProfit, price[i] + RobCuttingProfit(length, price, CurLen - length[i], i));
+	}
+
+	return MaxProfit;
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3007,6 +3024,8 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/rod-cutting/
+	std::cout << "Max Profit on lenght of rope is: " << 
+		RobCuttingProfit({ 1, 2, 3, 4, 5, 6, 7, 8 }, { 1, 5, 8, 9, 10, 17, 17, 20 }, 4, 0) << "\n";
 	//End
 
 	//https://www.techiedelight.com/find-palindromic-permutations-string/

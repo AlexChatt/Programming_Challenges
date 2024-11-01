@@ -109,5 +109,6 @@ void FindLongestPal(std::string s);
 void PrintNonOverlapSubStrings(std::string s, int index, std::vector<std::vector<std::string>>& combinations, std::vector<std::string> current);
 void StringDiff(std::string X, std::string Y);
 int KnapSackProblem(std::vector<int> value, std::vector<int> weight, int CurWeight, int curri, std::map <std::string, int> lookup);
+int RobCuttingProfit(std::vector<int> length, std::vector<int> price, int CurLen, int StartI);
 
 int runMFunctions();
