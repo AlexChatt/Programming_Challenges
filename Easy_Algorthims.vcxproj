@@ -142,6 +142,7 @@
     <ClCompile Include="Algorithms.cpp" />
     <ClCompile Include="backup.cpp" />
     <ClCompile Include="Easy_Algorithms.cpp" />
+    <ClCompile Include="graph.cpp" />
     <ClCompile Include="Hard_Algorithms.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Medium_Algorithms.cpp" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
     <ClInclude Include="Easy_Algorthims.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="Hard_Algorithms.h" />
     <ClInclude Include="Martix.h" />
     <ClInclude Include="Medium_Algorithms.h" />

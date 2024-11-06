@@ -2530,6 +2530,50 @@ int RobCuttingProfit(std::vector<int> length, std::vector<int> price, int CurLen
 	return MaxProfit;
 }
 
+int EvaluateMathExpression(std::string Equation)
+{
+	int finishSum = 0, lastnum = 0;
+	int multi = 1;
+	std::stack<int> signStack;
+
+	signStack.push(multi);
+
+	for (int i = 0; i < Equation.size(); i++)
+	{
+		if (std::isdigit(Equation[i]))
+		{
+			lastnum = lastnum * 10 + (Equation[i] - '0');
+		}
+		else if (Equation[i] == '+')
+		{
+			finishSum += multi * lastnum;
+
+			lastnum = 0;
+
+			multi = signStack.top();
+		}
+		else if (Equation[i] == '-')
+		{
+			finishSum += multi * lastnum;
+
+			lastnum = 0;
+
+			multi = signStack.top() * -1;
+		}
+		else if (Equation[i] == '(')
+		{
+			signStack.push(multi);
+		}
+		else if (Equation[i] == ')')
+		{
+			signStack.pop();
+		}
+	}
+
+	finishSum += multi * lastnum;
+	return finishSum;
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3028,11 +3072,15 @@ int runMFunctions()
 		RobCuttingProfit({ 1, 2, 3, 4, 5, 6, 7, 8 }, { 1, 5, 8, 9, 10, 17, 17, 20 }, 4, 0) << "\n";
 	//End
 
-	//https://www.techiedelight.com/find-palindromic-permutations-string/
+	//https://www.techiedelight.com/evaluate-given-expression/
+	std::cout<< EvaluateMathExpression("10 - (5 + 4)") << "\n";
 	//End
 
 	//https://www.techiedelight.com/construct-longest-palindrome-string/
 	FindLongestPal("ABCDD");
+	//End
+
+	//https://leetcode.com/problems/expression-add-operators/description/
 	//End
 
 	return 0;

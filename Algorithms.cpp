@@ -211,5 +211,15 @@ int runAlgFunctions()
 	std::vector<int> holder = numbers;
 	MergeSort(numbers, holder, 0, numbers.size()-1);
 
+	Graph G1;
+	G1.addEdge(gNode("Jack", false), gNode("Bill", false), false, 1);
+	G1.addEdge(gNode("Jack", false), gNode("Phil", false), false, 1);
+	G1.addEdge(gNode("Jack", false), gNode("Sarah", false), false, 1);
+	G1.addEdge(gNode("Bill", false), gNode("John", false), false, 1);
+	G1.addEdge(gNode("Bill", false), gNode("Nat", true), false, 1);
+	G1.printAdjList();
+	std::string salesmen = "\0";
+	G1.breathFirstMango("Jack", salesmen);
+
 	return 0;
 }

@@ -110,5 +110,6 @@ void PrintNonOverlapSubStrings(std::string s, int index, std::vector<std::vector
 void StringDiff(std::string X, std::string Y);
 int KnapSackProblem(std::vector<int> value, std::vector<int> weight, int CurWeight, int curri, std::map <std::string, int> lookup);
 int RobCuttingProfit(std::vector<int> length, std::vector<int> price, int CurLen, int StartI);
+int EvaluateMathExpression(std::string Equation);
 
 int runMFunctions();

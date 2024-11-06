@@ -3,6 +3,8 @@
 #include <vector>
 #include <algorithm> 
 #include <numeric>
+#include "graph.h"
+
 
 int BinaryChopNonRecursive(std::vector<int> SortedNums, int NumToFind);
 
