@@ -111,5 +111,6 @@ void StringDiff(std::string X, std::string Y);
 int KnapSackProblem(std::vector<int> value, std::vector<int> weight, int CurWeight, int curri, std::map <std::string, int> lookup);
 int RobCuttingProfit(std::vector<int> length, std::vector<int> price, int CurLen, int StartI);
 int EvaluateMathExpression(std::string Equation);
-
+int MinCoinChange(std::vector<int> validCoins, int MoneyLeft);
+int MinCoinChangeDynamic(std::vector<int> validCoins, int MoneyLeft);
 int runMFunctions();

@@ -2574,6 +2574,58 @@ int EvaluateMathExpression(std::string Equation)
 	return finishSum;
 }
 
+int MinCoinChange(std::vector<int> validCoins, int MoneyLeft)
+{
+	int MinCoinsNeeded = INT_MAX-1;
+
+	if (MoneyLeft < 0)
+	{
+		return MinCoinsNeeded;
+	}
+	else if (MoneyLeft == 0)
+	{
+		return 0;
+	}
+
+	for (int i = 0; i < validCoins.size(); i++)
+	{
+		MinCoinsNeeded = std::min(MinCoinsNeeded, 1 + MinCoinChange(validCoins, MoneyLeft - validCoins[i]));
+	}
+
+	return MinCoinsNeeded;
+}
+
+int MinCoinChangeDynamic(std::vector<int> validCoins, int MoneyLeft)
+{
+	std::vector<int> T(MoneyLeft + 1);
+	T[0] = 0;
+
+	for (int i = 1; i <= MoneyLeft; i++)
+	{
+		// initialize the minimum number of coins needed to infinity
+		T[i] = INT_MAX;
+		int result = INT_MAX;
+
+		// do for each coin
+		for (int c : validCoins)
+		{
+			// check if the index doesn't become negative by including current coin `c`
+			if (i - c >= 0) {
+				result = T[i - c];
+			}
+
+			// if total can be reached by including current coin `c`,
+			// update the minimum number of coins needed `T[i]`
+			if (result != INT_MAX) {
+				T[i] = std::min(T[i], result + 1);
+			}
+		}
+	}
+
+	// `T[target]` stores the minimum number of coins needed to get a total of `target`
+	return T[MoneyLeft];
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3068,7 +3120,7 @@ int runMFunctions()
 	//End
 
 	//https://www.techiedelight.com/rod-cutting/
-	std::cout << "Max Profit on lenght of rope is: " << 
+	std::cout << "Max Profit on lenght of rod is: " << 
 		RobCuttingProfit({ 1, 2, 3, 4, 5, 6, 7, 8 }, { 1, 5, 8, 9, 10, 17, 17, 20 }, 4, 0) << "\n";
 	//End
 
@@ -3078,6 +3130,13 @@ int runMFunctions()
 
 	//https://www.techiedelight.com/construct-longest-palindrome-string/
 	FindLongestPal("ABCDD");
+	//End
+
+	//https://www.techiedelight.com/coin-change-making-problem-unlimited-supply-coins/
+	std::cout<<"The minimum number of coins required to get the desired change is "
+		<< MinCoinChange(std::vector<int>{1, 3, 5, 7}, 18) << "\n";
+	std::cout << "The minimum number of coins required to get the desired change is "
+		<< MinCoinChangeDynamic(std::vector<int>{1, 3, 5, 7}, 18) << "\n";
 	//End
 
 	//https://leetcode.com/problems/expression-add-operators/description/
