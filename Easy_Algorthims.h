@@ -26,9 +26,9 @@ void SelectionSort(int Numbers[], int size);
 void MergeSort(int Numbers[], int SortedNumbers[], int low, int high);
 void CountingSort(int Numbers[], int size, int maxNum);
 std::string RLE(std::string data);
-bool traversalTree(node* root, int countdown);
-node* insertInTree(node* root, int key);
-void PrintTree(node* root);
+bool traversalTree(node<int>* root, int countdown);
+node<int>* insertInTree(node<int>* root, int key);
+void PrintTree(node<int>* root);
 void ReverseArray(int Numbers[], int size);
 void ElementsHigherThenRight(int Numbers[], int size);
 

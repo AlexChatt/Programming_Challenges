@@ -2,14 +2,15 @@
 #include <stdio.h>
 #include <iostream>
 
+template <typename T>
 struct node
 {
-	int number = 0;
+	T value;
 	node* Left, * Right;
 
-	node(int num)
+	node(T num)
 	{
-		number = num;
+		value = num;
 		Left = Right = NULL;
 	}
 
@@ -20,6 +21,6 @@ struct node
 		Left = Right = NULL;
 	}
 
-	int getNumber() const { return number; }
-	void printNum() const  { std::cout << number << " "; }
+	T getValue() const { return value; }
+	void printValue() const  { std::cout << value << " "; }
 };

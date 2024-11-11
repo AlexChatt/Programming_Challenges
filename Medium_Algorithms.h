@@ -53,13 +53,13 @@ void AddedCombosSolve(std::vector<int>& curNums, int num, int current, std::vect
 //End
 
 // Inorder Tree Traversal
-void TraverseOrderTree(node* Root);
+void TraverseOrderTree(node<int>* Root);
 // End
 // Preorder Tree Traversal
-void TraversePreOrderTree(node* Root);
+void TraversePreOrderTree(node<int>* Root);
 // End
 // Postorder Tree Traversal
-void TraversePostOrderTree(node* Root);
+void TraversePostOrderTree(node<int>* Root);
 // End
 
 std::vector<std::vector<int>> GetAllTripToSum(std::vector<int> nums, int target);

@@ -4,6 +4,7 @@
 #include <algorithm> 
 #include <numeric>
 #include "graph.h"
+#include "utility.h"
 
 
 int BinaryChopNonRecursive(std::vector<int> SortedNums, int NumToFind);
@@ -21,3 +22,9 @@ void MergeSort(std::vector<int> &arr, std::vector<int> &aux, int low, int high);
 void MergeS(std::vector<int> &arr, std::vector<int> &aux, int low, int mid, int high);
 
 int runAlgFunctions();
+
+//https://en.wikipedia.org/wiki/Huffman_coding
+bool paircomp(const std::pair<int, node<std::string>*>& a, const std::pair<int, node<std::string>*>& b);
+node<std::string>* ConstructHuffmanTree(std::string word);
+std::string GetIdFromHuffmanTree(node<std::string>* root, std::string text);
+std::string GetTextFromHuffmanTree(node<std::string>* root, std::string text);

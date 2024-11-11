@@ -191,6 +191,122 @@ void MergeS(std::vector<int> &arr, std::vector<int> &aux, int low, int mid, int 
 	}
 }
 
+bool paircomp(const std::pair<int, node<std::string>*>& a, const std::pair<int, node<std::string>*>& b)
+{
+	return a.first < b.first;
+}
+
+node<std::string>* ConstructHuffmanTree(std::string word)
+{
+	std::unordered_map<char, int> chars;
+	std::vector<std::pair<int, node<std::string>*>> nodes;
+
+	if (word.size() == 0) { return nullptr; }
+
+	for (int i = 0; i < word.size(); i++)
+	{
+		if (chars.find(word[i]) == chars.end())
+		{
+			chars[word[i]] = 1;
+		}
+		else
+		{
+			chars[word[i]]++;
+		}
+	}
+
+	for (auto& Item : chars)
+	{
+		node<std::string>* NewNode = new node<std::string>(std::string{ Item.first });
+		nodes.push_back(std::pair<int, node<std::string>*>(Item.second, NewNode));
+	}
+
+	while (nodes.size() > 1)
+	{
+		std::sort(nodes.begin(), nodes.end(), paircomp);
+		int comNum = nodes[0].first + nodes[1].first;
+		std::string comString = nodes[0].second->getValue() + nodes[1].second->getValue();
+		node<std::string>* NewNode = new node<std::string>(comString);
+		NewNode->Left = nodes[0].second;
+		NewNode->Right = nodes[1].second;
+		nodes.erase(nodes.begin());
+		nodes.erase(nodes.begin());
+		nodes.push_back(std::pair<int, node<std::string>*>(comNum, NewNode));
+	}
+
+	return nodes[0].second;
+}
+
+std::string GetIdFromHuffmanTree(node<std::string>* root, std::string text)
+{
+	std::string TextToBinary = "";
+	node<std::string>* CurrentNode = root;
+
+	for (int i = 0; i < text.size(); i++)
+	{
+		std::string currentCode = "";
+		CurrentNode = root;
+		while (true)
+		{
+			if (CurrentNode->value == std::string{ text[i] })
+			{
+				TextToBinary += currentCode;
+				break;
+			}
+			if (CurrentNode->Left && CurrentNode->Left->value.find(text[i]) != std::string::npos)
+			{
+				currentCode += "0";
+				CurrentNode = CurrentNode->Left;
+			}
+			else if (CurrentNode->Right && CurrentNode->Right->value.find(text[i]) != std::string::npos)
+			{
+				currentCode += "1";
+				CurrentNode = CurrentNode->Right;
+			}
+			else
+			{
+				std::cout << "Error: Huffman Tree does not contain letter " << text[i] << "\n";
+				break;
+			}
+		}
+	}
+	return TextToBinary;
+}
+
+std::string GetTextFromHuffmanTree(node<std::string>* root, std::string text)
+{
+	std::string BinaryToText = "";
+	node<std::string>* CurrentNode = root;
+
+	for (int i = 0; i < text.size(); i++)
+	{
+		if (CurrentNode->value.size() > 1)
+		{
+			if (text[i] == '0')
+			{
+				CurrentNode = CurrentNode->Left;
+			}
+			else if (text[i] == '1')
+			{
+				CurrentNode = CurrentNode->Right;
+			}
+			else
+			{
+				std::cout << "Error: None binary value detect " << text[i] << "\n";
+				break;
+			}
+		}
+
+		if (CurrentNode->value.size() == 1)
+		{
+			BinaryToText += CurrentNode->value;
+			CurrentNode = root;
+		}
+	}
+
+	return BinaryToText;
+}
+
 int runAlgFunctions()
 {
 	std::vector<int> numbers = { 1,3,5,6,9,10,13,16,19,23,26,29,32,35,39,40,42,45,78,100};
@@ -220,6 +336,12 @@ int runAlgFunctions()
 	G1.printAdjList();
 	std::string salesmen = "\0";
 	G1.breathFirstMango("Jack", salesmen);
+
+	node<std::string>* root = ConstructHuffmanTree("hello");
+	std::string Binarycode = GetIdFromHuffmanTree(root, "hello");
+	std::string OriginalString = GetTextFromHuffmanTree(root, Binarycode);
+	std::cout << "Original Text = " << OriginalString << ". Binary Code = " << Binarycode << std::endl;
+	delete root;
 
 	return 0;
 }

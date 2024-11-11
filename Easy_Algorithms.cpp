@@ -581,7 +581,7 @@ std::string RLE(std::string data)
     return RLEString;
 }
 
-bool traversalTree(node* root, int countdown)
+bool traversalTree(node<int>* root, int countdown)
 {
     if(!root) {
         return false;
@@ -589,7 +589,7 @@ bool traversalTree(node* root, int countdown)
 
     if (countdown == 1)
     {
-        root->printNum();
+        root->printValue();
         return true;
     }
 
@@ -598,14 +598,14 @@ bool traversalTree(node* root, int countdown)
     traversalTree(root->Right, countdown);
 }
 
-node* insertInTree(node* root, int key)
+node<int>* insertInTree(node<int>* root, int key)
 {
     if (!root)
     {
-        return new node(key);
+        return new node<int>(key);
     }
 
-    if (key < root->number)
+    if (key < root->value)
     {
         root->Left = insertInTree(root->Left, key);
         //node* newnode = insertInTree(root->Left, key);
@@ -627,7 +627,7 @@ node* insertInTree(node* root, int key)
     return root;
 }
 
-void PrintTree(node* root)
+void PrintTree(node<int>* root)
 {
     if (!root) { return; }
 
@@ -635,7 +635,7 @@ void PrintTree(node* root)
     {
         PrintTree(root->Left);
     }
-    std::cout << root->number << " ";
+    std::cout << root->value << " ";
     if (root->Right)
     {
         PrintTree(root->Right);
@@ -816,13 +816,13 @@ int runEFunctions()
     // End
 
     // https://www.techiedelight.com/level-order-traversal-binary-tree/
-    node* root = new node(15);
-    root->Left = new node(10);
-    root->Right = new node(20);
-    root->Left->Left = new node(8);
-    root->Left->Right = new node(12);
-    root->Right->Left = new node(18);
-    root->Right->Right = new node(25);
+    node<int>* root = new node<int>(15);
+    root->Left = new node<int>(10);
+    root->Right = new node<int>(20);
+    root->Left->Left = new node<int>(8);
+    root->Left->Right = new node<int>(12);
+    root->Right->Left = new node<int>(18);
+    root->Right->Right = new node<int>(25);
 
     int printRow = 0;
     do

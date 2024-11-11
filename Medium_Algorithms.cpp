@@ -1255,10 +1255,10 @@ void TripleSum(std::vector<int> numbers, std::vector<int>& curTrip, int& remaini
 
 }
 
-void TraverseOrderTree(node* Root)
+void TraverseOrderTree(node<int>* Root)
 {
-	std::stack<node*> NodeStack;
-	node* Current = Root;
+	std::stack<node<int>*> NodeStack;
+	node<int>* Current = Root;
 
 	if (!Root)
 	{
@@ -1276,16 +1276,16 @@ void TraverseOrderTree(node* Root)
 		{
 			Current = NodeStack.top();
 			NodeStack.pop();
-			Current->printNum();
+			Current->printValue();
 			Current = Current->Right;
 		}
 	}
 }
 
-void TraversePreOrderTree(node* Root)
+void TraversePreOrderTree(node<int>* Root)
 {
-	std::stack<node*> NodeStack;
-	node* Current = Root;
+	std::stack<node<int>*> NodeStack;
+	node<int>* Current = Root;
 
 	if (!Root)
 	{
@@ -1296,7 +1296,7 @@ void TraversePreOrderTree(node* Root)
 	{
 		if (Current)
 		{
-			Current->printNum();
+			Current->printValue();
 			if (Current->Right)
 			{
 				NodeStack.push(Current->Right);
@@ -1311,11 +1311,11 @@ void TraversePreOrderTree(node* Root)
 	}
 }
 
-void TraversePostOrderTree(node* Root)
+void TraversePostOrderTree(node<int>* Root)
 {
-	std::stack<node*> NodeStack;
+	std::stack<node<int>*> NodeStack;
 	std::stack<int> out;
-	node* Current = Root;
+	node<int>* Current = Root;
 	NodeStack.push(Root);
 
 	if (!Root)
@@ -1326,10 +1326,10 @@ void TraversePostOrderTree(node* Root)
 	while (!NodeStack.empty())
 	{
 		// pop a node from the stack and push the data into the output stack
-		node* curr = NodeStack.top();
+		node<int>* curr = NodeStack.top();
 		NodeStack.pop();
 
-		out.push(curr->getNumber());
+		out.push(curr->getValue());
 
 		// push the left and right child of the popped node into the stack
 		if (curr->Left) {
@@ -2921,14 +2921,14 @@ int runMFunctions()
 
 	{
 		//Create Tree
-		node* root = new node(1);
-		root->Left = new node(2);
-		root->Right = new node(3);
-		root->Left->Left = new node(4);
-		root->Right->Left = new node(5);
-		root->Right->Right = new node(6);
-		root->Right->Left->Left = new node(7);
-		root->Right->Left->Right = new node(8);
+		node<int>* root = new node<int>(1);
+		root->Left = new node<int>(2);
+		root->Right = new node<int>(3);
+		root->Left->Left = new node<int>(4);
+		root->Right->Left = new node<int>(5);
+		root->Right->Right = new node<int>(6);
+		root->Right->Left->Left = new node<int>(7);
+		root->Right->Left->Right = new node<int>(8);
 		//End
 
 		//https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
