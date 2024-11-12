@@ -2626,6 +2626,37 @@ int MinCoinChangeDynamic(std::vector<int> validCoins, int MoneyLeft)
 	return T[MoneyLeft];
 }
 
+void ReverseWordOrder(std::string& words)
+{
+	std::stack<std::string> stackWords;
+	std::string word;
+	for (int i = 0; i < words.size(); i++)
+	{
+		if (words[i] == ' ')
+		{
+			stackWords.push(word);
+			word = "\0";
+		}
+		else
+		{
+			word += words[i];
+		}
+	}
+
+	stackWords.push(word);
+	words = "\0";
+
+	while (stackWords.size() > 0)
+	{
+		words += stackWords.top();
+		if (stackWords.size() != 1)
+		{
+			words += " ";
+		}
+		stackWords.pop();
+	}
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3137,6 +3168,12 @@ int runMFunctions()
 		<< MinCoinChange(std::vector<int>{1, 3, 5, 7}, 18) << "\n";
 	std::cout << "The minimum number of coins required to get the desired change is "
 		<< MinCoinChangeDynamic(std::vector<int>{1, 3, 5, 7}, 18) << "\n";
+	//End
+
+	//https://www.techiedelight.com/reverse-text-without-reversing-individual-words/
+	std::string words = "Technical Interview Preparation";
+	ReverseWordOrder(words);
+	std::cout << words << std::endl;
 	//End
 
 	//https://leetcode.com/problems/expression-add-operators/description/
