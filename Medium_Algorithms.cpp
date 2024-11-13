@@ -2657,6 +2657,29 @@ void ReverseWordOrder(std::string& words)
 	}
 }
 
+bool StringMatchPattern(std::string word, std::string pattern)
+{
+	std::string matchingChars = "";
+
+	for (int i = 0; i < word.size(); i++)
+	{
+		if (pattern.find(word[i]) != std::string::npos)
+		{
+			if (matchingChars.size() == 0 || matchingChars[matchingChars.size() - 1] != word[i])
+			{
+				matchingChars += word[i];
+			}
+		}
+	}
+
+	if (matchingChars != pattern)
+	{
+		return false;
+	}
+
+	return true;
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3174,6 +3197,17 @@ int runMFunctions()
 	std::string words = "Technical Interview Preparation";
 	ReverseWordOrder(words);
 	std::cout << words << std::endl;
+	//End
+
+	//https://www.geeksforgeeks.org/check-string-follows-order-characters-defined-pattern-not/
+	if (StringMatchPattern("engineers rock","erk"))
+	{
+		std::cout << "TRUE\n";
+	}
+	else
+	{
+		std::cout << "FALSE\n";
+	}
 	//End
 
 	//https://leetcode.com/problems/expression-add-operators/description/

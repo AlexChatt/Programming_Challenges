@@ -113,5 +113,6 @@ int RobCuttingProfit(std::vector<int> length, std::vector<int> price, int CurLen
 int EvaluateMathExpression(std::string Equation);
 int MinCoinChange(std::vector<int> validCoins, int MoneyLeft);
 int MinCoinChangeDynamic(std::vector<int> validCoins, int MoneyLeft);
-void ReverseWordOrder(std::vector<std::string>& words);
+void ReverseWordOrder(std::string& words);
+bool StringMatchPattern(std::string word, std::string pattern);
 int runMFunctions();
