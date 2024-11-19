@@ -115,4 +115,5 @@ int MinCoinChange(std::vector<int> validCoins, int MoneyLeft);
 int MinCoinChangeDynamic(std::vector<int> validCoins, int MoneyLeft);
 void ReverseWordOrder(std::string& words);
 bool StringMatchPattern(std::string word, std::string pattern);
+void BinaryCombos(std::string original, std::vector<int> current, int index);
 int runMFunctions();

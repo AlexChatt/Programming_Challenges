@@ -2680,6 +2680,34 @@ bool StringMatchPattern(std::string word, std::string pattern)
 	return true;
 }
 
+void BinaryCombos(std::string original, std::vector<int> current, int index)
+{
+	if (current.size() == original.size())
+	{
+		for (int i = 0; i < current.size(); i++)
+		{
+			std::cout << current[i];
+		}
+		std::cout << std::endl;
+		return;
+	}
+
+	if (original[index] != '?')
+	{
+		current.push_back(original[index] - '0');
+		BinaryCombos(original, current, index +1);
+	}
+	else
+	{
+		current.push_back(0);
+		BinaryCombos(original, current, index + 1);
+		current.pop_back();
+
+		current.push_back(1);
+		BinaryCombos(original, current, index + 1);
+	}
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3208,6 +3236,11 @@ int runMFunctions()
 	{
 		std::cout << "FALSE\n";
 	}
+	//End
+
+	// https://www.techiedelight.com/find-binary-strings-can-formed-given-wildcard-pattern/
+	std::string binaryString = "1?11?00?1?";
+	BinaryCombos(binaryString, std::vector<int>{}, 0);
 	//End
 
 	//https://leetcode.com/problems/expression-add-operators/description/
