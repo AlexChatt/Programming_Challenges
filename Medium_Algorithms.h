@@ -61,6 +61,10 @@ void TraversePreOrderTree(node<int>* Root);
 // Postorder Tree Traversal
 void TraversePostOrderTree(node<int>* Root);
 // End
+// Cousin Check
+bool TreeCousinCheck(node<int>* Root, node<int>*N1, node<int>*N2);
+bool FindNodeDepth(node<int>* Root, node<int>* Node, int Depth, int& FoundDepth);
+// End
 
 std::vector<std::vector<int>> GetAllTripToSum(std::vector<int> nums, int target);
 void TripleSum(std::vector<int> numbers, std::vector<int>& curTrip, int& remaining, int curIndex, std::vector<std::vector<int>>& allCombos);

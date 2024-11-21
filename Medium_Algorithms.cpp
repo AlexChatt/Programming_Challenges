@@ -1349,6 +1349,50 @@ void TraversePostOrderTree(node<int>* Root)
 	}
 }
 
+bool TreeCousinCheck(node<int>* Root, node<int>* N1, node<int>* N2)
+{
+	int n1_depth = 0, n2_depth = 0;
+
+	if (!N1 || !N2)
+	{
+		std::cout << "one of the node provided is not valid\n";
+		return false;
+	}
+
+	if (!FindNodeDepth(Root, N1, 0, n1_depth))
+	{
+		std::cout << "Cant find node 2 in tree\n";
+	}
+	if (!FindNodeDepth(Root, N2, 0, n2_depth))
+	{
+		std::cout << "Cant find node 1 in tree\n";
+	}
+
+	if (n1_depth == n2_depth)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool FindNodeDepth(node<int>* Root, node<int>* Node, int Depth, int& FoundDepth)
+{
+	if (Root == Node)
+	{
+		return true;
+	}
+	int currentDepth = Depth + 1;
+
+	if ((Root->Left && FindNodeDepth(Root->Left, Node, Depth + 1, FoundDepth)) ||
+		(Root->Right && FindNodeDepth(Root->Right, Node, Depth + 1, FoundDepth)))
+	{
+		FoundDepth = currentDepth;
+	}
+	
+	return false;
+}
+
 std::pair<int, int> closestPair(std::vector<int> n1, std::vector<int> n2, int target)
 {
 	int ClosestMatch = INT_MAX;
@@ -3026,6 +3070,17 @@ int runMFunctions()
 		//https://www.techiedelight.com/postorder-tree-traversal-iterative-recursive/
 		TraversePostOrderTree(root);
 		std::cout << std::endl;
+		//End
+
+		//https://www.techiedelight.com/determine-two-nodes-are-cousins/
+		if (TreeCousinCheck(root, root->Left->Left, root->Right->Left->Left))
+		{
+			std::cout << "Nodes are cousins of each other";
+		}
+		else
+		{
+			std::cout << "Nodes are not cousins of each other";
+		}
 		//End
 
 		//Clean up tree
