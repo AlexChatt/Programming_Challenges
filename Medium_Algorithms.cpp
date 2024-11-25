@@ -1393,6 +1393,63 @@ bool FindNodeDepth(node<int>* Root, node<int>* Node, int Depth, int& FoundDepth)
 	return false;
 }
 
+bool CheckIfSumTree(node<int>* Root)
+{
+	int lSum = 0, rSum = 0;
+
+	if (Root == NULL)
+	{
+		return false;
+	}
+	else if (!Root->Left && !Root->Right && Root->getValue() == 0)
+	{
+		return true;
+	}
+
+	if (Root->Left)
+	{
+		lSum = SumNodes(Root->Left);
+	}
+	if (Root->Right)
+	{
+		rSum = SumNodes(Root->Right);
+	}
+
+	if (lSum + rSum == Root->getValue())
+	{
+		return true;
+	}
+
+	return false;
+}
+
+int SumNodes(node<int>* Node)
+{
+	int sum = 0;
+
+	if (!Node->Left && !Node->Right)
+	{
+		return Node->getValue();
+	}
+
+	if (Node->Left)
+	{
+		sum += SumNodes(Node->Left);
+	}
+
+	if (Node->Right)
+	{
+		sum += SumNodes(Node->Right);
+	}
+
+	if (sum != Node->getValue())
+	{
+		return -1;
+	}
+
+	return sum + Node->getValue();
+}
+
 std::pair<int, int> closestPair(std::vector<int> n1, std::vector<int> n2, int target)
 {
 	int ClosestMatch = INT_MAX;
@@ -3075,16 +3132,36 @@ int runMFunctions()
 		//https://www.techiedelight.com/determine-two-nodes-are-cousins/
 		if (TreeCousinCheck(root, root->Left->Left, root->Right->Left->Left))
 		{
-			std::cout << "Nodes are cousins of each other";
+			std::cout << "Nodes are cousins of each other\n";
 		}
 		else
 		{
-			std::cout << "Nodes are not cousins of each other";
+			std::cout << "Nodes are not cousins of each other\n";
 		}
 		//End
 
-		//Clean up tree
+		node<int>* root2 = new node<int>(44);
+		root2->Left = new node<int>(9);
+		root2->Right = new node<int>(13);
+		root2->Left->Left = new node<int>(4);
+		root2->Left->Right = new node<int>(5);
+		root2->Right->Left = new node<int>(6);
+		root2->Right->Right = new node<int>(7);
+
+	    //https://www.techiedelight.com/check-given-binary-tree-sum-tree-not/
+		if (CheckIfSumTree(root2))
+		{
+			std::cout << "Binary tree is a sum tree\n";
+		}
+		else
+		{
+			std::cout << "Binary tree is not a sum tree\n";
+		}
+		//End
+
+		//Clean up trees
 		delete root;
+		delete root2;
 		//End
 	}
 
