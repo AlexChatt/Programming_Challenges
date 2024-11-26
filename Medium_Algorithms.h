@@ -69,6 +69,10 @@ bool FindNodeDepth(node<int>* Root, node<int>* Node, int Depth, int& FoundDepth)
 bool CheckIfSumTree(node<int>* Root);
 int SumNodes(node<int>* Node);
 // End
+// Diameter of a binary tree
+int GetTreeDimention(node<int>* Root);
+int CountPath(node<int>* Node);
+// End
 
 std::vector<std::vector<int>> GetAllTripToSum(std::vector<int> nums, int target);
 void TripleSum(std::vector<int> numbers, std::vector<int>& curTrip, int& remaining, int curIndex, std::vector<std::vector<int>>& allCombos);

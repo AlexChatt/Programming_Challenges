@@ -1450,6 +1450,42 @@ int SumNodes(node<int>* Node)
 	return sum + Node->getValue();
 }
 
+int GetTreeDimention(node<int>* Root)
+{
+	int dimention = 0;
+
+	if (!Root || (!Root->Left && !Root->Right) ) { return 0; }
+
+	if (!Root->Left && Root->Right)
+	{
+		dimention = GetTreeDimention(Root->Right);
+	}
+	else if (Root->Left && !Root->Right)
+	{
+		dimention = GetTreeDimention(Root->Left);
+	}
+	else
+	{
+		dimention += CountPath(Root->Left);
+		dimention += CountPath(Root->Right);
+		dimention += 1;
+	}
+
+	return dimention;
+}
+
+int CountPath(node<int>* Node)
+{
+	if (!Node) { return 0; }
+
+    int leftCount, rightCount;
+
+	leftCount = CountPath(Node->Left);
+	rightCount = CountPath(Node->Right);
+
+	return std::max(leftCount, rightCount) + 1;
+}
+
 std::pair<int, int> closestPair(std::vector<int> n1, std::vector<int> n2, int target)
 {
 	int ClosestMatch = INT_MAX;
@@ -3157,11 +3193,29 @@ int runMFunctions()
 		{
 			std::cout << "Binary tree is not a sum tree\n";
 		}
+		//Clean up tree
+		delete root2;
 		//End
 
-		//Clean up trees
-		delete root;
+		root2 = new node<int>(1);
+
+		root2->Left = new node<int>(2);
+		root2->Left->Right = new node<int>(4);
+
+		root2->Right = new node<int>(3);
+		root2->Right->Left = new node<int>(5);
+		root2->Right->Right = new node<int>(6);
+
+		root2->Right->Left->Left = new node<int>(7);
+		root2->Right->Left->Right = new node<int>(8);
+
+		// https://www.techiedelight.com/find-diameter-of-a-binary-tree/
+		std::cout << "The diameter  of the tree is " << GetTreeDimention(root2) << std::endl;
 		delete root2;
+		//End
+
+		//Clean up tree
+		delete root;
 		//End
 	}
 
