@@ -2845,6 +2845,41 @@ void BinaryCombos(std::string original, std::vector<int> current, int index)
 	}
 }
 
+std::vector<int> FindPeakElements(std::vector<int> numbers)
+{
+	std::vector<int> PeakElements;
+	BSACheckPeak(0, std::floor((numbers.size()-1) / 2), numbers.size()-1, numbers, PeakElements);
+	return PeakElements;
+}
+
+void BSACheckPeak(int min, int mid, int max, std::vector<int> numbers, std::vector<int>& PeakNums)
+{
+	if (min == mid)
+	{
+		if (numbers[mid] > numbers[max] && min == 0)
+		{
+			PeakNums.push_back(numbers[mid]);
+		}
+		return;
+	}
+	else if (mid == max)
+	{
+		if (numbers[mid] > numbers[min] && max == numbers.size()-1)
+		{
+			PeakNums.push_back(numbers[mid]);
+		}
+		return;
+	}
+
+	if (numbers[mid] > numbers[mid + 1] && numbers[mid] > numbers[mid - 1])
+	{
+		PeakNums.push_back(numbers[mid]);
+	}
+
+	BSACheckPeak(min, std::floor((min + mid) / 2), mid, numbers, PeakNums);
+	BSACheckPeak(mid, std::floor((mid + max) / 2) + 1, max, numbers, PeakNums);
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3427,6 +3462,17 @@ int runMFunctions()
 	// https://www.techiedelight.com/find-binary-strings-can-formed-given-wildcard-pattern/
 	std::string binaryString = "1?11?00?1?";
 	BinaryCombos(binaryString, std::vector<int>{}, 0);
+	//End
+
+	//https://www.techiedelight.com/find-peak-element-array/
+	numbers = { 10, 8, 6, 5, 3, 2 };
+	std::vector<int> PeakNumbers = FindPeakElements(numbers);
+	std::cout << "The peak element('s) are ";
+	for (int i = 0; i < PeakNumbers.size(); i++)
+	{
+		std::cout << PeakNumbers[i] << " ";
+	}
+	std::cout << std::endl;
 	//End
 
 	//https://leetcode.com/problems/expression-add-operators/description/

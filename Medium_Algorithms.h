@@ -128,4 +128,6 @@ int MinCoinChangeDynamic(std::vector<int> validCoins, int MoneyLeft);
 void ReverseWordOrder(std::string& words);
 bool StringMatchPattern(std::string word, std::string pattern);
 void BinaryCombos(std::string original, std::vector<int> current, int index);
+std::vector<int> FindPeakElements(std::vector<int> numbers);
+void BSACheckPeak(int min, int mid, int max, std::vector<int> numbers, std::vector<int>& PeakNums);
 int runMFunctions();
