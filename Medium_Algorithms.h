@@ -130,4 +130,5 @@ bool StringMatchPattern(std::string word, std::string pattern);
 void BinaryCombos(std::string original, std::vector<int> current, int index);
 std::vector<int> FindPeakElements(std::vector<int> numbers);
 void BSACheckPeak(int min, int mid, int max, std::vector<int> numbers, std::vector<int>& PeakNums);
+int DACDFindMaxSum(std::vector<int> nums, int low, int high);
 int runMFunctions();

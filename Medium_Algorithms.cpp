@@ -2880,6 +2880,44 @@ void BSACheckPeak(int min, int mid, int max, std::vector<int> numbers, std::vect
 	BSACheckPeak(mid, std::floor((mid + max) / 2) + 1, max, numbers, PeakNums);
 }
 
+int DACDFindMaxSum(std::vector<int> nums, int low, int high)
+{
+	int mid = (low + high) / 2;
+
+	if (high <= low)
+	{
+		return nums[low];
+	}
+
+	int MaxLeft = INT_MIN;
+	int sum = 0;
+	// start from the middle and go back
+	for (int i = mid; i >= low; i--)
+	{
+		sum += nums[i];
+		if (sum > MaxLeft) 
+		{
+			MaxLeft = sum;
+		}
+	}
+
+	int MaxRight = INT_MIN;
+	sum = 0;
+	// start from the middle and go forward
+	for (int i = mid + 1; i <= high; i++)
+	{
+		sum += nums[i];
+		if (sum > MaxRight)
+		{
+			MaxRight = sum;
+		}
+	}
+
+	int max_combo = std::max(DACDFindMaxSum(nums, low, mid), DACDFindMaxSum(nums, mid + 1, high));
+
+	return std::max(max_combo, MaxLeft + MaxRight);
+}
+
 int runMFunctions()
 {
 	//https://www.techiedelight.com/check-subarray-with-0-sum-exists-not/
@@ -3473,6 +3511,11 @@ int runMFunctions()
 		std::cout << PeakNumbers[i] << " ";
 	}
 	std::cout << std::endl;
+	//End
+
+	//https://www.techiedelight.com/maximum-sum-subarray-using-divide-conquer/
+	numbers = { 20, -20, 1, 9, -6, 7, -3 };
+	std::cout<< "The maximum sum of the subarray is: " << DACDFindMaxSum(numbers, 0, numbers.size() - 1) << "\n";
 	//End
 
 	//https://leetcode.com/problems/expression-add-operators/description/
